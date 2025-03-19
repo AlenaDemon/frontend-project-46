@@ -13,4 +13,8 @@ test('gendiff', () => {
     getFixturePath('file1.json'),
     getFixturePath('file2.json'),
   )).toBe(readFile('result.txt'));
+  expect(gendiff(
+    getFixturePath('file1.yaml'),
+    getFixturePath('file2.yaml'),
+  )).toBe(readFile('result.txt'));
 });

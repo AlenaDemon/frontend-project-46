@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
@@ -23,7 +24,14 @@ const genDiff = (obj1, obj2) => {
 export default (filepath1, filepath2) => {
   const content1 = fs.readFileSync(path.resolve(filepath1), 'utf-8');
   const content2 = fs.readFileSync(path.resolve(filepath2), 'utf-8');
-  const parsedData1 = parser(content1);
-  const parsedData2 = parser(content2);
-  return genDiff(parsedData1, parsedData2);
+  if (path.extname(filepath1) === '.json') {
+    const parsedData1 = parser(content1, 'json');
+    const parsedData2 = parser(content2, 'json');
+    return genDiff(parsedData1, parsedData2);
+  }
+  if (path.extname(filepath1) === '.yaml') {
+    const parsedData1 = parser(content1, 'yaml');
+    const parsedData2 = parser(content2, 'yaml');
+    return genDiff(parsedData1, parsedData2);
+  }
 };
