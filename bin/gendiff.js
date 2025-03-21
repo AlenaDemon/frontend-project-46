@@ -12,6 +12,7 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((filepath1, filepath2) => {
-    console.log(app(filepath1, filepath2));
+    const result = app(filepath1, filepath2, program.opts().format);
+    console.log(result);
   });
 program.parse();
