@@ -26,7 +26,7 @@ const getPlain = (diffData) => {
         return [];
     }
   };
-  return _.sortBy(diffData.flatMap((node) => iter(node, '')).join('\n'));
+  return _.sortBy(diffData.flatMap((node) => iter(node, ''))).join('\n');
 };
 
 export default getPlain;
