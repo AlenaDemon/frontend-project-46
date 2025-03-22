@@ -9,5 +9,9 @@ const getFormat = (dataDiff, format = 'stylish') => {
   if (format === 'plain') {
     return getPlain(dataDiff);
   }
+  if (format === 'json') {
+    return JSON.stringify(dataDiff);
+  }
+  throw new Error(`Invalid format: ${format}`);
 };
 export default getFormat;

@@ -22,4 +22,9 @@ test('gendiff', () => {
     getFixturePath('file2.json'),
     'plain',
   )).toBe(readFile('result2.txt'));
+  expect(gendiff(
+    getFixturePath('file1.json'),
+    getFixturePath('file2.json'),
+    'json',
+  )).toBe(readFile('result3.txt'));
 });
