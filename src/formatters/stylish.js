@@ -29,11 +29,11 @@ const getStylish = (diffData) => {
   const iter = (innerTree, depth = 1) => {
     const result = innerTree.map((key) => {
       switch (key.action) {
-        case 'delete':
+        case 'removed':
           return `${getStartIndent(depth)}${signs.deleted}${key.key}: ${getStringify(key.value, depth + 1)}`;
         case 'added':
           return `${getStartIndent(depth)}${signs.added}${key.key}: ${getStringify(key.value, depth + 1)}`;
-        case 'changed':
+        case 'updated':
           return `${getStartIndent(depth)}${signs.deleted}${key.key}: ${getStringify(key.value, depth + 1)}\n${getStartIndent(depth)}${signs.added}${key.key}: ${getStringify(key.value2, depth + 1)}`;
         case 'child':
           return `${getStartIndent(depth)}${signs.unchanged}${key.key}: ${iter(key.value, depth + 1)}`;

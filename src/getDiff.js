@@ -20,14 +20,14 @@ const getDiff = (obj1, obj2) => {
     }
     if (!Object.hasOwn(obj2, key)) {
       return {
-        action: 'delete',
+        action: 'removed',
         key,
         value: value1,
       };
     }
     if (obj1[key] !== obj2[key]) {
       return {
-        action: 'changed',
+        action: 'updated',
         key,
         value: value1,
         value2,
