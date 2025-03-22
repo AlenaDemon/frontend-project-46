@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const getStringify = (value) => {
   if (typeof value === 'object') {
     return value === null ? null : '[complex value]';
@@ -24,7 +26,7 @@ const getPlain = (diffData) => {
         return [];
     }
   };
-  return diffData.flatMap((node) => iter(node, '')).sort().join('\n');
+  return _.sortBy(diffData.flatMap((node) => iter(node, '')).join('\n'));
 };
 
 export default getPlain;
